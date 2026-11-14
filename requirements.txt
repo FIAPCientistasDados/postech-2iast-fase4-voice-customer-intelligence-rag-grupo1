@@ -44,6 +44,8 @@ jsonpatch==1.47
 jsonpointer==3.12
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
+kagglehub==1.0.3
+kagglesdk==0.1.38
 kubernetes==37.0.2
 langchain==1.5.0
 langchain-classic==1.0.8
