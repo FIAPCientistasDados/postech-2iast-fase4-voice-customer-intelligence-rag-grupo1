@@ -1,5 +1,14 @@
-# Tech Challenge Fase 4
-## Voice of Customer Intelligence com RAG
+# Postech Tech Challenge Fase 4 | Voice of Customer Intelligence com RAG: 
+
+**Integrantes do Grupo (2IAST - Grupo1):**
+
+✅ Célia Maria Tomitsuka - RM374490
+
+✅ Nelson da Silva Paz - RM374983
+
+✅ Nelson Toshikazu Yamamoto - RM374494
+
+---
 
 ## 📋 Sumário
 
