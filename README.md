@@ -17,8 +17,7 @@
 - [12. Estrutura do Projeto](#12-estrutura-do-projeto)
 - [13. Limitações e Trabalhos Futuros](#13-limitações-e-trabalhos-futuros)
 - [14. Referências](#14-referências)
-- [15. Como rodar o projeto](#15-como-rodar-o-projeto)
-- [16. Entrega do projeto](#16-entrega-do-projeto)
+- [15. Entrega do projeto](#16-entrega-do-projeto)
 
 ---
 
@@ -296,7 +295,7 @@ streamlit run src/app/app.py
 # 12. Estrutura do Projeto
 
 ```text
-tech-challenge-fase4/
+postech-2iast-fase4-voice-customer-intelligence-rag-grupo1/
 │
 ├── data/
 │   ├── raw/
@@ -364,6 +363,4 @@ tech-challenge-fase4/
 - OpenAI Documentation
 - Streamlit Documentation
 
-# 15. Como rodar o projeto
-
-# 16. Entrega do projeto
+# 15. Entrega do projeto
