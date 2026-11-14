@@ -1,0 +1,16 @@
+# logs
+logs/
+*.log
+
+# ambiente virtual
+.venv/
+
+# banco vetorial
+data/vector_db/
+
+# cache
+__pycache__/
+*.pyc
+
+# variáveis
+.env

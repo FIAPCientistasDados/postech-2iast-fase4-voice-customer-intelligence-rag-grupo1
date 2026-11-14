@@ -77,13 +77,20 @@ O sistema permite explorar a voz do cliente de forma rápida, escalável e funda
 
 # 3. Base de Dados
 
-## Dataset
+## Download da Base
 
-Brazilian E-Commerce Public Dataset by Olist.
+### Dataset
 
-Disponível em:
+Brazilian E-Commerce Public Dataset by Olist
+
+Acesse:
 
 https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
+Baixe os arquivos e extraia para:
+
+data/raw/
+
 
 ## Tabelas Utilizadas
 
