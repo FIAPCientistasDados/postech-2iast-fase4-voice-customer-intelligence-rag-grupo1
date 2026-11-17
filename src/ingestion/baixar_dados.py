@@ -1,11 +1,6 @@
 """
-Download do dataset Olist.
-
-Responsabilidades:
-- Verificar se os arquivos já existem em data/raw
-- Baixar automaticamente o dataset do Kaggle
-- Copiar apenas os arquivos necessários
-- Registrar todas as etapas em log
+Baixa automaticamente o dataset Olist
+e copia os CSVs necessários para data/raw.
 
 Uso:
 
@@ -25,21 +20,16 @@ log = obter_logger(__name__)
 
 def baixar() -> Path:
     """
-    Baixa o dataset Olist e copia os arquivos
-    necessários para o diretório data/raw.
+    Baixa o dataset Olist
+    e copia os arquivos necessários.
 
     Returns
     -------
     Path
-        Caminho da pasta contendo os dados brutos.
+        Diretório data/raw
     """
 
     destino = config.DADOS_BRUTOS
-
-    destino.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
 
     faltando = [
         arquivo
@@ -48,10 +38,11 @@ def baixar() -> Path:
     ]
 
     if not faltando:
+
         log.info(
-            "Base já disponível em %s",
-            destino,
+            "Todos os arquivos já estão disponíveis."
         )
+
         return destino
 
     log.info(
@@ -59,6 +50,7 @@ def baixar() -> Path:
     )
 
     try:
+
         origem = Path(
             kagglehub.dataset_download(
                 config.KAGGLE_DATASET
@@ -71,11 +63,12 @@ def baixar() -> Path:
         )
 
     except Exception as erro:
-        log.error(
-            "Falha ao baixar dataset: %s",
-            erro,
+
+        log.exception(
+            "Falha ao baixar dataset."
         )
-        raise
+
+        raise erro
 
     for arquivo in faltando:
 
@@ -85,7 +78,7 @@ def baixar() -> Path:
         if not origem_arquivo.exists():
 
             log.error(
-                "Arquivo não encontrado no dataset: %s",
+                "Arquivo ausente no dataset: %s",
                 arquivo,
             )
 
@@ -104,7 +97,7 @@ def baixar() -> Path:
         )
 
     log.info(
-        "Download concluído com sucesso."
+        "Download finalizado com sucesso."
     )
 
     return destino
@@ -112,33 +105,32 @@ def baixar() -> Path:
 
 def validar_base() -> bool:
     """
-    Verifica se todos os arquivos
-    necessários estão disponíveis.
-
-    Returns
-    -------
-    bool
+    Verifica se todos os arquivos existem.
     """
 
-    arquivos_faltantes = [
-        arquivo
-        for arquivo in config.ARQUIVOS_OLIST
+    faltando = []
+
+    for arquivo in config.ARQUIVOS_OLIST:
+
         if not (
             config.DADOS_BRUTOS / arquivo
-        ).exists()
-    ]
+        ).exists():
 
-    if arquivos_faltantes:
+            faltando.append(
+                arquivo
+            )
+
+    if faltando:
 
         log.warning(
-            "Arquivos ausentes: %s",
-            arquivos_faltantes,
+            "Arquivos faltando: %s",
+            faltando,
         )
 
         return False
 
     log.info(
-        "Todos os arquivos foram encontrados."
+        "Base validada com sucesso."
     )
 
     return True
@@ -146,21 +138,6 @@ def validar_base() -> bool:
 
 if __name__ == "__main__":
 
-    try:
+    baixar()
+    validar_base()
 
-        baixar()
-
-        if validar_base():
-
-            log.info(
-                "Dataset pronto para uso."
-            )
-
-    except Exception as erro:
-
-        log.exception(
-            "Erro durante ingestão: %s",
-            erro,
-        )
-
-        raise

@@ -91,6 +91,13 @@ Baixe os arquivos e extraia para:
 
 data/raw/
 
+### Download dos Dados
+
+O dataset será baixado automaticamente:
+
+```bash
+python -m src.ingestion.baixar_dados
+
 
 ## Tabelas Utilizadas
 
@@ -298,6 +305,7 @@ source .venv/bin/activate
 
 ```bash
 pip install -r requirements.txt
+conda env create -f environment.yml
 ```
 
 ## Executar Aplicação
@@ -380,3 +388,8 @@ postech-2iast-fase4-voice-customer-intelligence-rag-grupo1/
 - Streamlit Documentation
 
 # 15. Entrega do projeto
+
+---
+Teste:
+
+pytest -v
